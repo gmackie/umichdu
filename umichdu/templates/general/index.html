@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block head %}
+  {{ super() }}
+  <style type=text/css>
+    h1 { margin: 0 0 30px 0; background: url({{ url_for('static', filename='logo.png') }}) no-repeat center; height: 165px; }
+    h1 span, p.tagline { display: none; }
+  </style>
+  <script type=text/javascript>
+    $(function() {
+      $('h1').bind('mousedown contextmenu', function(event) {
+        if (event.button != 2)
+          return;
+        var box = $('div.logohint');
+        if (!box.is(':visible'))
+          box.animate({'height': 'show', 'opacity': 'show'}, 100);
+        event.preventDefault();
+        event.returnValue = false;
+        return false;
+      });
+    });
+  </script>
+{% endblock %}
+
+{% block body_title %}
+  {{ super() }}
+  <p class=tagline>because sometimes a pocket knife is not enough
+  <div class=logohint style="display: none">
+    <p>
+    <p>
+  </div>
+{% endblock %}
+
+{% block body %}
+<p>
+Delta Upsilon, an international fraternity founded in 1834 at Williams College on the principle of non-secrecy, is committed to building better men by espousing the four founding principles: the promotion of friendship, the development of character, the diffusion of liberal culture and the advancement of justice. 
+<p>
+Founded in 1876, the University of Michigan chapter has been a stable on campus for well over a hundred years and continues to contribute to every aspect of campus life: academic, athletic, social, student government and philanthropic. Our iconic 1903 chapter house was completely rebuilt and finished in August 2012, allowing DU to continue building on its venerable tradition at Michigan.
+<p>
+We welcome you to our website and invite you to explore the past, present, and future of the University of Michigan Chapter of Delta Upsilon. 
+<p>
+Dikaia Upotheke - Go Blue!
+
+{% endblock %}
