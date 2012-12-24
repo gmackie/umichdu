@@ -1,31 +1,56 @@
-<!doctype html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 {% block head %}
-<title>{% block title %}Welcome{% endblock %} | Delta Upsilon Umich </title> 
-<meta charset=utf-8>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Delta Upsilon | University of Michigan</title>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
+
+<link href="{{ url_for('static', filename='default.css') }}" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
 <script type=text/javascript
   src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 {% endblock %}
-<div class=box>
-  {% block body_title %}
-    <h1><span>{{ self.title() }}</span></h1>
-  {% endblock %}
-  <p class=nav>
-    <a href="{{ url_for('general.index') }}">Home</a> //
-    <a href="{{ url_for('parent.index') }}">Parents</a> //
-    <a href="{{ url_for('greek.index') }}">Greek Life</a> //
-    <a href="{{ url_for('chapter.index') }}">Our Chapter</a> //
-    <a href="{{ url_for('recruit.index') }}">Recruitment</a> //
-    <a href="{{ url_for('history.index') }}">History</a> //
-    <a href="{{ url_for('chapter.brothers') }}">Brothers</a> //
-    <a href="{{ url_for('chapter.alumni') }}">Alumni</a>
-  {% for message in get_flashed_messages() %}
-    <p class=message>{{ message }}
-  {% endfor %}
-  {% block body %}{% endblock %}
-  <p class=footer>
-    &copy; Copyright 2012 by <a href=http://grahammackie.com/>Graham Mackie</a> //
+</head>
+<body>
+<div id="wrapper">
+  <div id="header-wrapper">
+    <div id="header">
+      <div id="logo">
+        <h1><a href="#">Delta Upsilon</a></h1>
+      <p>University of Michigan Chapter</p>
+      </div>
+      <div id="menu">
+        <ul>
+            <li><a href="{{ url_for('general.index') }}">Home</a></li>
+            <li><a href="{{ url_for('parent.index') }}">Parents</a></li>
+              <li><a href="{{ url_for('greek.index') }}">Greek Life</a></li>
+              <li><a href="{{ url_for('chapter.index') }}">Our Chapter</a></li>
+              <li><a href="{{ url_for('recruit.index') }}">Recruitment</a></li>
+              <li><a href="{{ url_for('history.index') }}">History</a></li>
+              <!--<li><a href="{{ url_for('chapter.brothers') }}">Brothers</a></li>
+              <li><a href="{{ url_for('chapter.alumni') }}">Alumni</a></li>-->
+          </ul>
+      </div>
+    </div>
+  </div>
+  <!-- <div id="banner"><img src="{{ url_for('static', filename='header-img.jpg') }}" width="1120" height="500" alt="" /></div> -->
+  <div id="page-wrapper">
+  	<div id="page">
+		<div id="wide-content">
+			<div>
+				{% block body %}{% endblock %}
+  			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<div id="footer">
+  <p>&copy; Copyright 2012 by <a href=http://grahammackie.com/>Graham Mackie </a>
     {% if g.user %}
     <a href="{{ url_for('general.profile') }}">profile</a> /
     <a href="{{ url_for('general.logout') }}" title="signed in as {{
@@ -33,5 +58,7 @@
       %} - Administrator{% endif %}">sign out</a>
     {% else %}
     <a href="{{ url_for('general.login') }}">sign in</a>
-    {% endif %}
+    {% endif %}</p>
 </div>
+</body>
+</html>
